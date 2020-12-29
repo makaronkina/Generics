@@ -4,11 +4,6 @@ public class Orange extends Fruit{
     }
 
     @Override
-    public float getWeight() {
-        return super.getWeight();
-    }
-
-    @Override
     public String toString() {
         return "Orange{"+
                 getWeight()+ "}";

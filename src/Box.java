@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Box<T extends Fruit> {
+public class Box<T extends Fruit> implements Comparable<Box<?>>{
     private ArrayList<T> boxOfFruits;
 
     public Box(T... fruits) {
@@ -20,7 +20,7 @@ public class Box<T extends Fruit> {
         return weight;
     }
 
-    public void compare(Box<? extends Fruit> anotherBox) {
+    public void compare(Box<?> anotherBox) {
         if (Math.abs(this.getWeight() - anotherBox.getWeight()) < 0.0001) {
             System.out.println("Weight of boxes are equals: " + this.getWeight());
         } else {
@@ -46,5 +46,21 @@ public class Box<T extends Fruit> {
         return "Box{" +
                 "boxOfFruits=" + boxOfFruits +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Box<?> anotherBox) {
+        float currentSize = boxOfFruits.get(0).getWeight() * boxOfFruits.size();
+        float otherSize = anotherBox.getBoxOfFruits().get(0).getWeight() * anotherBox.getBoxOfFruits().size();
+        if (currentSize < otherSize) {
+            System.out.printf("Weight of boxes are not equals: %s and %s\n", this.getWeight(), anotherBox.getWeight());
+            return -1;
+        } else if (currentSize > otherSize) {
+            System.out.printf("Weight of boxes are not equals: %s and %s\n", this.getWeight(), anotherBox.getWeight());
+            return 1;
+        } else {
+            System.out.println("Weight of boxes are equals: " + this.getWeight());
+            return 0;
+        }
     }
 }

@@ -30,6 +30,8 @@ class Main {
 
         appleBox1.compare(orangeBox);
         orangeBox.compare(appleBox2);
+        appleBox1.compareTo(orangeBox);
+        orangeBox.compareTo(appleBox2);
 
         appleBox1.replaceFruit(appleBox2);
     }
